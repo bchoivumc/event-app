@@ -33,13 +33,17 @@ class LocationController{
       return Future.error(
           'Location permissions are permanently denied, we cannot request permissions.');
     }
-    lc=locationModel(country: "", locality: "");
+    lc=locationModel(country: "", locality: "", latitude: 0, longitude: 0);
     Position pos= await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);
     List<Placemark> placemarks = await placemarkFromCoordinates(pos.latitude, pos.longitude);
     if(placemarks.isNotEmpty){
 
       lc.locality="${placemarks[0].locality.toString()}, ${placemarks[0].street.toString()}";
       lc.country=placemarks[0].country.toString();
+      lc.latitude = pos.latitude;
+      lc.longitude = pos.longitude;
+
+      print('current location lat: ${lc.latitude} and lon: ${lc.longitude} and locality: ${lc.locality}');
 
     }else{
       lc.locality="Enable location";

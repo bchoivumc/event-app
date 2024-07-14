@@ -1,13 +1,17 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:event_app/app/configs/colors.dart';
 import 'package:event_app/ui/pages/calender_page.dart';
+import 'package:event_app/ui/pages/current_location_map.dart';
 import 'package:event_app/ui/pages/home_page.dart';
 import 'package:event_app/ui/pages/profile_page.dart';
 import 'package:event_app/ui/pages/ticket_page.dart';
 import 'package:flutter/material.dart';
 
 class MyNavigationBar extends StatefulWidget {
-  const MyNavigationBar({super.key});
+  double? current_latitude;
+  double? current_longitude;
+
+  MyNavigationBar(double this.current_latitude, double this.current_longitude, {super.key});
 
   @override
   State<MyNavigationBar> createState() => _MyNavigationBarState();
@@ -20,11 +24,12 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
   final List<Widget> buildPages = [
     HomePage(),
     const TicketPage(),
-    const CalendarPage(),
+    CurrentLocationMap(0,0),
     const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
+    print('current location NAV Bar lat: ${widget.current_latitude} and lon: ${widget.current_longitude}');
     return CurvedNavigationBar(
       key: _bottomNavigationKey,
       index: 0,
@@ -51,7 +56,7 @@ class _MyNavigationBarState extends State<MyNavigationBar> {
         //by vineet
         if (index == 2) {
           Navigator.push(
-              context, MaterialPageRoute(builder: (context) => CalendarPage()));
+              context, MaterialPageRoute(builder: (context) => CurrentLocationMap(widget.current_latitude, widget.current_longitude)));
         } else if (index == 3) {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => ProfilePage()));

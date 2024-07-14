@@ -11,13 +11,15 @@ class EventCubit extends Cubit<EventState> {
   void loadEventData() async {
     emit(EventLoading());
     try {
-      var data = await EventModel.getJson();
-      List<dynamic> jsonResult = json.decode(data);
+      var jsonString = await EventModel.getJson();
+      final rawJson = json.decode(jsonString);
+      List<dynamic> jsonResult = rawJson['items'];
+      // List<dynamic> jsonResult = json.decode(data);
       List<EventModel> events =
           jsonResult.map((e) => EventModel.fromJson(e)).toList();
       emit(EventLoaded(events: events));
     } catch (e) {
-      emit(EventError(message: 'Terjadi kesalahan saat memuat data'));
+      emit(EventError(message: 'An error occurred while loading data'));
     }
   }
 }

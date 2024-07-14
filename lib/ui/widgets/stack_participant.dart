@@ -121,7 +121,7 @@ class StackParticipant extends StatelessWidget {
         Positioned(
           left: positionText,
           child: Text(
-            "250+ Joined",
+            "250+ Joined!",
             style: TextStyle(color: AppColors.primaryColor, fontSize: fontSize),
           ),
         )

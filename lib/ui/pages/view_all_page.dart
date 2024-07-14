@@ -7,11 +7,9 @@ import 'package:flutter/material.dart';
 
 class ViewAllPage extends StatelessWidget {
   final bool isPopularEvent;
+  final int? day;
 
-  const ViewAllPage({
-    super.key,
-    required this.isPopularEvent,
-  });
+  const ViewAllPage({super.key, required this.isPopularEvent, this.day});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,7 @@ class ViewAllPage extends StatelessWidget {
             return const Center(child: Text('No data available.'));
           } else {
             return EventList(
-              events: snapshot.data!,
+              events: snapshot.data!.toList(),
               isPopularEvent: isPopularEvent,
             );
           }
@@ -51,7 +49,20 @@ class ViewAllPage extends StatelessWidget {
 
   Future<List<EventModel>> _loadEvents() async {
     String jsonString = await EventModel.getJson();
-    List<dynamic> jsonList = json.decode(jsonString);
+    final rawJson = json.decode(jsonString);
+    List<dynamic> jsonList = rawJson['items'];
+    if (day != null) {
+      switch (day) {
+        case 1:
+          return jsonList
+              .map((json) => EventModel.fromJson(json))
+              .toList()
+              .where((element) => element.date == 'Sunday, September 8, 2024')
+              .toList();
+
+        default:
+      }
+    }
     return jsonList.map((json) => EventModel.fromJson(json)).toList();
   }
 }
@@ -60,7 +71,8 @@ class EventList extends StatelessWidget {
   final List<EventModel> events;
   final bool isPopularEvent;
 
-  const EventList({super.key, required this.events, required this.isPopularEvent});
+  const EventList(
+      {super.key, required this.events, required this.isPopularEvent});
 
   @override
   Widget build(BuildContext context) {

@@ -1,4 +1,4 @@
-package com.rrdhoi.event_app
+package org.vumc.eventapp
 
 import io.flutter.embedding.android.FlutterActivity
 
