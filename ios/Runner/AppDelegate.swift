@@ -7,9 +7,14 @@ import GoogleMaps
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-  ) -> Bool {
+  ) -> Bool { 
+    if let apiKey = ProcessInfo.processInfo.environment["GMS_API"] {
+        print("The value is: \(apiKey)")
+      } else {
+        print("Environment variable not set.")
+      }
     GeneratedPluginRegistrant.register(with: self)
-    GMSServices.provideAPIKey("AIzaSyBbrZDNgfIFnHk3_M75czIeRKLxoe2YZS8")
+    GMSServices.provideAPIKey(apiKey)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 }
