@@ -26,7 +26,7 @@ class DetailPage extends StatelessWidget {
                     const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
                 child: Column(
                   children: [
-                    _buildAppBar(context),
+                    _buildAppBar(context, eventModel),
                     const SizedBox(height: 24),
                     _buildCardImage(eventModel),
                     const SizedBox(height: 16),
@@ -36,10 +36,10 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: _buildBottomBar(context, eventModel),
-          )
+          // Align(
+          //   alignment: Alignment.bottomCenter,
+          //   child: _buildBottomBar(context, eventModel),
+          // )
         ],
       ),
     );
@@ -135,47 +135,70 @@ class DetailPage extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            right: 22,
-            top: 22,
-            child: Container(
-              height: 65,
-              width: 48,
-              decoration: BoxDecoration(
-                color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    eventModel.date.split(" ")[0],
-                  ),
-                  Text(
-                    eventModel.date.split(" ")[1],
-                    style: const TextStyle(
-                      color: AppColors.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          )
+          // Positioned(
+          //   right: 22,
+          //   top: 22,
+          //   child: Container(
+          //     height: 65,
+          //     width: 48,
+          //     decoration: BoxDecoration(
+          //       color: AppColors.whiteColor,
+          //       borderRadius: BorderRadius.circular(10),
+          //     ),
+          //     child: Column(
+          //       crossAxisAlignment: CrossAxisAlignment.center,
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Text(
+          //           eventModel.date.split(" ")[0],
+          //         ),
+          //         Text(
+          //           eventModel.date.split(" ")[1],
+          //           style: const TextStyle(
+          //             color: AppColors.primaryColor,
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // )
         ],
       );
 
-  Widget _buildAppBar(BuildContext context) => Row(
+  Widget _buildAppBar(BuildContext context, EventModel eventModel) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CircleButton(
             icon: 'assets/images/back.png',
             onTap: () => Navigator.pop(context),
           ),
-          const Text(
-            "Detail",
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          Container(
+            // height: 65,
+            // width: 48,
+            decoration: BoxDecoration(
+              color: AppColors.whiteColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "${eventModel.startTime}-${eventModel.endTime} ",
+                ),
+                Text(
+                  "${eventModel.date.split(" ")[1]} ${eventModel.date.split(" ")[2].substring(0, eventModel.date.split(" ")[2].length - 1)}",
+                  style: const TextStyle(
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              ],
+            ),
           ),
+          // const Text(
+          //   "Detail",
+          //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+          // ),
         ],
       );
 
@@ -190,10 +213,17 @@ class DetailPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      eventModel.title,
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.w600),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 250),
+                      child: Text(
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        eventModel.title,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 6),
                     Row(
@@ -208,22 +238,22 @@ class DetailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                Container(
-                  width: 65,
-                  height: 35,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: AppColors.primaryLightColor,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Text(
-                    "\$100",
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                )
+                // Container(
+                //   width: 65,
+                //   height: 35,
+                //   alignment: Alignment.center,
+                //   decoration: BoxDecoration(
+                //     color: AppColors.primaryLightColor,
+                //     borderRadius: BorderRadius.circular(10),
+                //   ),
+                //   child: const Text(
+                //     "\$100",
+                //     style: TextStyle(
+                //       color: AppColors.primaryColor,
+                //       fontWeight: FontWeight.w500,
+                //     ),
+                //   ),
+                // )
               ],
             ),
             const SizedBox(height: 16),

@@ -59,6 +59,25 @@ class ViewAllPage extends StatelessWidget {
               .toList()
               .where((element) => element.date == 'Sunday, September 8, 2024')
               .toList();
+        case 2:
+          return jsonList
+              .map((json) => EventModel.fromJson(json))
+              .toList()
+              .where((element) => element.date == 'Monday, September 9, 2024')
+              .toList();
+        case 3:
+          return jsonList
+              .map((json) => EventModel.fromJson(json))
+              .toList()
+              .where((element) => element.date == 'Tuesday, September 10, 2024')
+              .toList();
+        case 4:
+          return jsonList
+              .map((json) => EventModel.fromJson(json))
+              .toList()
+              .where(
+                  (element) => element.date == 'Wednesday, September 11, 2024')
+              .toList();
 
         default:
       }

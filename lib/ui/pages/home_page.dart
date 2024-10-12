@@ -116,6 +116,15 @@ class _HomePageState extends State<HomePage> {
                               color: AppColors.primaryColor),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
@@ -129,6 +138,63 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: const Text(
                           "Day 1",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: AppColors.primaryColor),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ViewAllPage(
+                                      isPopularEvent: true,
+                                      day: 2,
+                                    )),
+                          );
+                        },
+                        child: const Text(
+                          "Day 2",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: AppColors.primaryColor),
+                        ),
+                      ),
+                       GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ViewAllPage(
+                                      isPopularEvent: true,
+                                      day: 3,
+                                    )),
+                          );
+                        },
+                        child: const Text(
+                          "Day 3",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: AppColors.primaryColor),
+                        ),
+                      ),
+                       GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ViewAllPage(
+                                      isPopularEvent: true,
+                                      day: 4,
+                                    )),
+                          );
+                        },
+                        child: const Text(
+                          "Day 4",
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
@@ -321,7 +387,7 @@ class _HomePageState extends State<HomePage> {
       );
 
   _listEventThisMonth(List<EventModel> events) => Container(
-        height: 320,
+        height: 640,
         margin: const EdgeInsets.symmetric(horizontal: 24),
         child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
