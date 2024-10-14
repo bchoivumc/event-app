@@ -33,7 +33,7 @@ class EditProfile extends StatelessWidget{
                   alignment: Alignment.bottomRight,
                   children: <Widget>[
                     const CircleAvatar(
-                      backgroundImage: NetworkImage("https://avatars.githubusercontent.com/u/85386116?s=400&u=81f5587a31a3c80319ed97931c1001636a663198&v=4"),
+                      backgroundImage: AssetImage('assets/images/bc_st_pete.png'),
                       radius: 70,
                     ),
                     Padding(

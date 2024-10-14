@@ -11,12 +11,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:event_app/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+  
+  testWidgets('Home screen test to find Day 1 text', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(const MyApp());
 
     // Verify that our counter starts at 0.
     expect(find.text('Day 1'), findsOneWidget);
+
+    print('Finding test for Day 1 --> Success!');
     // expect(find.text('1'), findsNothing);
 
     // // Tap the '+' icon and trigger a frame.

@@ -330,8 +330,7 @@ class _HomePageState extends State<HomePage> {
                   shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(
-                        "https://avatars.githubusercontent.com/u/85386116?s=400&u=81f5587a31a3c80319ed97931c1001636a663198&v=4"),
+                    image: AssetImage('assets/images/bc_st_pete.png'),
                   ),
                 ),
               ),
