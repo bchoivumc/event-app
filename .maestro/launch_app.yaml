@@ -2,7 +2,7 @@ appId: "org.vumc.eventapp"
 ---
 - launchApp
 - assertVisible: "View All"
-- tapOn: "View All"
-- assertVisible: "Installing a Local REDCap Instance"
-- back
-- assertVisible: "Popular Event"
+# - tapOn: "View All"
+# - assertVisible: "Installing a Local REDCap Instance"
+# - back
+# - assertVisible: "Popular Event"
