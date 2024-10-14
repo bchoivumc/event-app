@@ -49,7 +49,9 @@ class _HomePageState extends State<HomePage> {
     try {
       lc = await _controller.getCurrentLocation();
       setState(() {
-        address_locality = lc.locality;
+        address_locality = lc.locality == "Mountain View, Unnamed Road"
+            ? "Fairfax, Virginia"
+            : lc.locality;
         address_country = lc.country;
         current_latitude = lc.latitude;
         current_longitude = lc.longitude;
@@ -163,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                               color: AppColors.primaryColor),
                         ),
                       ),
-                       GestureDetector(
+                      GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
@@ -182,7 +184,7 @@ class _HomePageState extends State<HomePage> {
                               color: AppColors.primaryColor),
                         ),
                       ),
-                       GestureDetector(
+                      GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
